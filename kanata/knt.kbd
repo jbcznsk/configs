@@ -1,0 +1,61 @@
+
+(defcfg
+	process-unmapped-keys yes
+)
+
+(defsrc
+	a
+	s
+	d
+	f
+	j
+	k
+	l
+	;
+	i
+)
+
+(defvar
+	tap-time 150
+	hold-time 200
+)
+
+(defalias
+	a-mod (tap-hold $tap-time $hold-time a lctl)
+	s-mod (tap-hold $tap-time $hold-time s lalt)
+	d-mod (tap-hold $tap-time $hold-time d lsft)
+	k-mod (tap-hold $tap-time $hold-time k lsft)
+	l-mod (tap-hold $tap-time $hold-time l lalt)
+	;-mod (tap-hold $tap-time $hold-time ; lctl)
+
+	f-mod(tap-hold $tap-time $hold-time f (layer-while-held arrows))
+	j-arrow-mod(tap-hold $tap-time $hold-time ArrowLeft ArrowLeft)
+	i-arrow-mod(tap-hold $tap-time $hold-time ArrowUp ArrowUp)
+	k-arrow-mod(tap-hold $tap-time $hold-time ArrowDown ArrowDown)
+	l-arrow-mod(tap-hold $tap-time $hold-time ArrowRight ArrowRight)
+	
+)
+
+(deflayer base
+	@a-mod
+	@s-mod
+	@d-mod
+	@f-mod
+	_
+	@k-mod
+	@l-mod
+	@;-mod
+	_
+)
+
+(deflayer arrows
+	_
+	_
+	_
+	_
+	@j-arrow-mod	
+	@k-arrow-mod	
+	@l-arrow-mod	
+	_
+	@i-arrow-mod	
+)
